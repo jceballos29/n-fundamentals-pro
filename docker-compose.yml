@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: fundamentals
+      POSTGRES_PASSWORD: fundamentals-password
+      POSTGRES_DB: fundamentals
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
