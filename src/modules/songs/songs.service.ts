@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { CreateSongDto } from './dto/create-song.dto';
 import { UpdateSongDto } from './dto/update-song.dto';
 import { Song } from './entities/song.entity';
@@ -8,7 +8,8 @@ import { InjectRepository } from '@nestjs/typeorm';
 @Injectable()
 export class SongsService {
   constructor(
-    @InjectRepository(Song) private readonly songsRepository: Repository<Song>,
+    @Inject('SONGS_REPOSITORY')
+    private readonly songsRepository: Repository<Song>,
   ) {}
 
   private readonly songs = [];
@@ -29,27 +30,26 @@ export class SongsService {
     return await this.songsRepository.find();
   }
 
-  findOne(id: number) {
-    return this.songsRepository.findOne({
+  async findOne(id: number) {
+    return await this.songsRepository.findOne({
       where: {
         id,
       },
     });
   }
 
-  update(id: number, updateSongDto: UpdateSongDto) {
-    const song = this.songs.find((song) => song.id === id);
-    this.songs[this.songs.indexOf(song)] = {
-      ...song,
-      updatedAt: new Date(),
-      ...updateSongDto,
-    };
-    return song;
+  async update(id: number, updateSongDto: UpdateSongDto) {
+    return await this.songsRepository.update(
+      {
+        id,
+      },
+      updateSongDto,
+    );
   }
 
-  remove(id: number) {
-    const song = this.songs.find((song) => song.id === id);
-    this.songs.splice(this.songs.indexOf(song), 1);
-    return song;
+  async remove(id: number) {
+    return await this.songsRepository.delete({
+      id,
+    });
   }
 }

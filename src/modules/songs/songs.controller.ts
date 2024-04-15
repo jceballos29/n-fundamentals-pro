@@ -50,7 +50,7 @@ export class SongsController {
   }
 
   @Get('/:id')
-  findOne(
+  async findOne(
     @Param(
       'id',
       new ParseIntPipe({
@@ -60,7 +60,7 @@ export class SongsController {
     id: number,
   ) {
     try {
-      const song = this.songsService.findOne(id);
+      const song = await this.songsService.findOne(id);
       if (!song) {
         this.logger.error('Song not found');
         return new HttpException('Song not found', HttpStatus.NOT_FOUND);
@@ -75,7 +75,7 @@ export class SongsController {
   }
 
   @Patch('/:id')
-  update(
+  async update(
     @Param(
       'id',
       new ParseIntPipe({
@@ -86,7 +86,8 @@ export class SongsController {
     @Body() updateSongDto: UpdateSongDto,
   ) {
     try {
-      const song = this.songsService.update(id, updateSongDto);
+      const song = await this.songsService.update(id, updateSongDto);
+      console.log(song);
       if (!song) {
         this.logger.error('Song not found');
         return new HttpException('Song not found', HttpStatus.NOT_FOUND);
@@ -100,7 +101,7 @@ export class SongsController {
   }
 
   @Delete('/:id')
-  remove(
+  async remove(
     @Param(
       'id',
       new ParseIntPipe({
@@ -110,7 +111,7 @@ export class SongsController {
     id: number,
   ) {
     try {
-      const song = this.songsService.remove(id);
+      const song = await this.songsService.remove(id);
       if (!song) {
         this.logger.error('Song not found');
         return new HttpException('Song not found', HttpStatus.NOT_FOUND);
