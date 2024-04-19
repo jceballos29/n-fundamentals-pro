@@ -18,6 +18,7 @@ const logger = pino({
 
 @Injectable()
 export class LoggerService {
+  
   debug(message: string, context?: string) {
     logger.debug(message, context);
   }

@@ -1,0 +1,162 @@
+[
+	{
+		"title": "Balada Bajo la Luna",
+		"artists": ["Frida Violeta"],
+		"album": "Voces del Alma",
+		"genre": "Jazz Latino",
+		"releaseYear": 2011,
+		"duration": "3:30"
+	},
+	{
+		"title": "Canción para un Naufragio",
+		"artists": ["Cielo Ardiente"],
+		"album": "Rebeldía Acústica",
+		"genre": "Pop Psicodélico",
+		"releaseYear": 2010,
+		"duration": "4:15"
+	},
+	{
+		"title": "En el Vuelo de los Sueños",
+		"artists": ["Frida Violeta", "Cielo Ardiente"],
+		"album": "Latidos Electrónicos",
+		"genre": "Fusión Global",
+		"releaseYear": 2013,
+		"duration": "2:50"
+	},
+	{
+		"title": "Fantasías Nocturnas",
+		"artists": ["Frida Violeta"],
+		"album": "Voces del Alma",
+		"genre": "Jazz Latino",
+		"releaseYear": 2009,
+		"duration": "3:45"
+	},
+	{
+		"title": "Historias de un Trovador",
+		"artists": ["Cielo Ardiente"],
+		"album": "Rebeldía Acústica",
+		"genre": "Pop Psicodélico",
+		"releaseYear": 2012,
+		"duration": "4:10"
+	},
+	{
+		"title": "Lágrimas de Cristal",
+		"artists": ["Frida Violeta", "Cielo Ardiente"],
+		"album": "Latidos Electrónicos",
+		"genre": "Fusión Global",
+		"releaseYear": 2014,
+		"duration": "3:20"
+	},
+	{
+		"title": "Los Colores del Silencio",
+		"artists": ["Frida Violeta"],
+		"album": "Voces del Alma",
+		"genre": "Jazz Latino",
+		"releaseYear": 2011,
+		"duration": "4:05"
+	},
+	{
+		"title": "Melodía del Atardecer",
+		"artists": ["Cielo Ardiente"],
+		"album": "Rebeldía Acústica",
+		"genre": "Pop Psicodélico",
+		"releaseYear": 2010,
+		"duration": "3:15"
+	},
+	{
+		"title": "Nostalgia Eterna",
+		"artists": ["Frida Violeta", "Cielo Ardiente"],
+		"album": "Latidos Electrónicos",
+		"genre": "Fusión Global",
+		"releaseYear": 2012,
+		"duration": "4:30"
+	},
+	{
+		"title": "Ojos Perdidos en el Horizonte",
+		"artists": ["Frida Violeta"],
+		"album": "Voces del Alma",
+		"genre": "Jazz Latino",
+		"releaseYear": 2009,
+		"duration": "3:40"
+	},
+	{
+		"title": "Poemas Cantados al Viento",
+		"artists": ["Cielo Ardiente"],
+		"album": "Rebeldía Acústica",
+		"genre": "Pop Psicodélico",
+		"releaseYear": 2013,
+		"duration": "4:20"
+	},
+	{
+		"title": "Ritmo del Corazón",
+		"artists": ["Frida Violeta", "Cielo Ardiente"],
+		"album": "Latidos Electrónicos",
+		"genre": "Fusión Global",
+		"releaseYear": 2014,
+		"duration": "3:35"
+	},
+	{
+		"title": "Sinfonía de Almas",
+		"artists": ["Alma Sonora"],
+		"album": "Historias entre Cuerdas",
+		"genre": "Afro-Beat",
+		"releaseYear": 2011,
+		"duration": "4:25"
+	},
+	{
+		"title": "Sueños que se Hacen Canción",
+		"artists": ["Alma Sonora"],
+		"album": "Historias entre Cuerdas",
+		"genre": "Afro-Beat",
+		"releaseYear": 2012,
+		"duration": "3:55"
+	},
+	{
+		"title": "Tempestad de Emociones",
+		"artists": ["Alma Sonora"],
+		"album": "Historias entre Cuerdas",
+		"genre": "Afro-Beat",
+		"releaseYear": 2009,
+		"duration": "4:50"
+	},
+	{
+		"title": "Susurros del Alma",
+		"artists": ["Alma Sonora"],
+		"album": "Historias entre Cuerdas",
+		"genre": "Afro-Beat",
+		"releaseYear": 2010,
+		"duration": "3:10"
+	},
+	{
+		"title": "Tan Lejos, Tan Cerca",
+		"artists": ["Frida Violeta", "Cielo Ardiente", "Alma Sonora"],
+		"album": "Sueños Despertares",
+		"genre": "Folktrónica",
+		"releaseYear": 2013,
+		"duration": "4:40"
+	},
+	{
+		"title": "Un verso para ti",
+		"artists": ["Frida Violeta", "Cielo Ardiente", "Alma Sonora"],
+		"album": "Sueños Despertares",
+		"genre": "Folktrónica",
+		"releaseYear": 2011,
+		"duration": "3:05"
+	},
+	{
+		"title": "Vuelo Rasante",
+		"artists": ["Frida Violeta", "Cielo Ardiente", "Alma Sonora"],
+		"album": "Sueños Despertares",
+		"genre": "Folktrónica",
+		"releaseYear": 2014,
+		"duration": "4:15"
+	},
+	{
+		"title": "Y la Luna me Habló...",
+		"artists": ["Frida Violeta"],
+		"album": "Voces del Alma",
+		"genre": "Jazz Latino",
+		"releaseYear": 2012,
+		"duration": "3:30"
+	}
+]

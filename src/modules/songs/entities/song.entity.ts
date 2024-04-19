@@ -7,12 +7,14 @@ import {
   ManyToMany,
   JoinTable,
   ManyToOne,
+  Generated,
 } from 'typeorm';
 
 @Entity()
 export class Song {
-  @PrimaryGeneratedColumn()
-  id: number;
+  @PrimaryGeneratedColumn('uuid') // Use 'uuid' generation strategy
+  @Generated('uuid') // Add this decorator for proper UUID generation
+  id: string; // Change type to string
 
   @Column('text')
   title: string;
@@ -23,14 +25,14 @@ export class Song {
   @Column('text')
   album: string;
 
-  @Column('date')
-  releaseDate: Date;
+  @Column('text')
+  genre: string;
+
+  @Column('int')
+  releaseYear: number;
 
   @Column('time')
   duration: Date;
-
-  @Column('text')
-  lyrics: string;
 
   // @ManyToMany(() => Artist, (artist) => artist.songs, { cascade: true })
   // @JoinTable({ name: 'songs_artists' })

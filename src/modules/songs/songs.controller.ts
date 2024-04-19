@@ -10,18 +10,28 @@ import {
   HttpException,
   ParseIntPipe,
   Scope,
+  BadRequestException,
+  UnauthorizedException,
+  Query,
 } from '@nestjs/common';
 import { SongsService } from './songs.service';
 import { CreateSongDto } from './dto/create-song.dto';
 import { UpdateSongDto } from './dto/update-song.dto';
 import { LoggerService } from 'src/services/logger.service';
+import { Pagination } from '../../common/pagination/dto/pagination.dto';
+import { SongsFilterDto } from './dto/songs-filter.dto';
+import { PaginationPipe } from '../../common/pagination/pipes/pagination.pipe';
+import { SongFiltersPipe } from './pipes/song-filters.pipe';
 
 @Controller({
   path: 'songs',
   scope: Scope.DEFAULT,
 })
 export class SongsController {
-  constructor(private readonly songsService: SongsService, private readonly logger: LoggerService) {}
+  constructor(
+    private readonly songsService: SongsService,
+    private readonly logger: LoggerService,
+  ) {}
 
   @Post('/')
   async create(@Body() createSongDto: CreateSongDto) {
@@ -30,34 +40,59 @@ export class SongsController {
       return song;
     } catch (error) {
       this.logger.error(error.message);
-      return new HttpException(error.message, HttpStatus.INTERNAL_SERVER_ERROR, {
-        cause: 'Error creating song',
-      });
+      return new HttpException(
+        error.message,
+        HttpStatus.INTERNAL_SERVER_ERROR,
+        {
+          cause: 'Error creating song',
+        },
+      );
+    }
+  }
+
+  @Post('/bulk')
+  async createBulk(@Body() createSongDto: CreateSongDto[]) {
+    try {
+      const songs = await this.songsService.createBulk(createSongDto);
+      return songs;
+    } catch (error) {
+      this.logger.error(error.message);
+      return new HttpException(
+        error.message,
+        HttpStatus.INTERNAL_SERVER_ERROR,
+        {
+          cause: 'Error creating songs',
+        },
+      );
     }
   }
 
   @Get('/')
-  async findAll() {
+  async findAll(
+    @Query(new PaginationPipe()) pagination: Pagination,
+    @Query(new SongFiltersPipe()) filters: SongsFilterDto,
+  ) {
     try {
-      const songs = await this.songsService.findAll();
+      const songs = await this.songsService.findAll(pagination, filters);
       return songs;
     } catch (error) {
       this.logger.error(error.message);
-      return new HttpException(error.message, HttpStatus.INTERNAL_SERVER_ERROR, {
-        cause: 'Error fetching songs',
-      });
+      return new HttpException(
+        error.message,
+        HttpStatus.INTERNAL_SERVER_ERROR,
+        {
+          cause: 'Error fetching songs',
+        },
+      );
     }
   }
 
   @Get('/:id')
   async findOne(
     @Param(
-      'id',
-      new ParseIntPipe({
-        errorHttpStatusCode: HttpStatus.NOT_ACCEPTABLE,
-      }),
+      'id'
     )
-    id: number,
+    id: string,
   ) {
     try {
       const song = await this.songsService.findOne(id);
@@ -68,9 +103,13 @@ export class SongsController {
       return song;
     } catch (error) {
       this.logger.error(error.message);
-      return new HttpException(error.message, HttpStatus.INTERNAL_SERVER_ERROR, {
-        cause: 'Error fetching song',
-      });
+      return new HttpException(
+        error.message,
+        HttpStatus.INTERNAL_SERVER_ERROR,
+        {
+          cause: 'Error fetching song',
+        },
+      );
     }
   }
 
@@ -78,11 +117,8 @@ export class SongsController {
   async update(
     @Param(
       'id',
-      new ParseIntPipe({
-        errorHttpStatusCode: HttpStatus.NOT_ACCEPTABLE,
-      }),
     )
-    id: number,
+    id: string,
     @Body() updateSongDto: UpdateSongDto,
   ) {
     try {
@@ -94,9 +130,13 @@ export class SongsController {
       }
     } catch (error) {
       this.logger.error(error.message);
-      return new HttpException(error.message, HttpStatus.INTERNAL_SERVER_ERROR, {
-        cause: 'Error updating song',
-      });
+      return new HttpException(
+        error.message,
+        HttpStatus.INTERNAL_SERVER_ERROR,
+        {
+          cause: 'Error updating song',
+        },
+      );
     }
   }
 
@@ -104,11 +144,8 @@ export class SongsController {
   async remove(
     @Param(
       'id',
-      new ParseIntPipe({
-        errorHttpStatusCode: HttpStatus.NOT_ACCEPTABLE,
-      }),
     )
-    id: number,
+    id: string,
   ) {
     try {
       const song = await this.songsService.remove(id);
@@ -118,9 +155,13 @@ export class SongsController {
       }
     } catch (error) {
       this.logger.error(error.message);
-      return new HttpException(error.message, HttpStatus.INTERNAL_SERVER_ERROR, {
-        cause: 'Error deleting song',
-      });
+      return new HttpException(
+        error.message,
+        HttpStatus.INTERNAL_SERVER_ERROR,
+        {
+          cause: 'Error deleting song',
+        },
+      );
     }
   }
 }
